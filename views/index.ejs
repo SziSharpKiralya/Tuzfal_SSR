@@ -10,6 +10,42 @@
 </head>
 <body>
     <h1><%= title %></h1>
-    Hello EJS!
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Priority</th>
+                <th>MAC</th>
+                <th>Enabled</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% rules.forEach(rule => { %>
+                <tr <% if (!rule.enabled) { %>class="off"<% } %>>
+                    <td><%= rule.id %></td>
+                    <td><%= rule.priority %></td>
+                    <td><%= rule.mac %></td>
+                    <% if (rule.enabled) { %>
+                        <td>bekapcsolva</td>
+                    <%} else { %>
+                        <td>kikapcsolva</td>
+                    <% } %>
+                </tr>
+            <% }) %>
+        </tbody >
+
+        <%if (error) { %>
+            <p class="error"><%= error %></p>   
+        <% } %>
+
+        <form action="/" method="POST">
+            <label for="priority">Priority:</label>
+            <input type="number" name="priority" value="1"><br>
+            <label for="mac">MAC:</label>
+            <input type="text" name="mac" value=""><br>
+            <label for="enabled">Enabled:</label>
+            <input type="checkbox" name="enabled"><br>
+            <button type="submit">Új szabály hozzáadása</button>
+        </form>
 </body>
 </html>

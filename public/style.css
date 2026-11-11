@@ -3,3 +3,8 @@ body {
     color:rgb(58, 46, 135);
 }
 
+.off {
+    color: rgb(150, 150, 150);
+    font-style: italic; 
+}
+
